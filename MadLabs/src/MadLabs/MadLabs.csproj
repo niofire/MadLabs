@@ -34,7 +34,6 @@
   </ItemGroup>
 
   <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
-    <Exec Command="npm install" />
     <Exec Command="dotnet bundle" />
   </Target>
 
