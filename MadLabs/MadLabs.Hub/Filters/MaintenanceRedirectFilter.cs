@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
-using System;
 
 namespace MadLabs.Hub.Filters
 {
@@ -27,14 +26,14 @@ namespace MadLabs.Hub.Filters
         {
             bool isUnderMaintenance = _config.GetValue<bool>("isUnderMaintenance");
 
-            if (!isUnderMaintenance || context.ActionDescriptor.RouteValues["action"] == "UnderConstruction")
+            if (!isUnderMaintenance || context.ActionDescriptor.RouteValues["action"] == "UnderMaintenance")
                 return;
 
             context.Result = new RedirectToRouteResult(
                 new RouteValueDictionary
                 {
                         { "controller", "Home" },
-                        {"action", "UnderConstruction" }
+                        {"action", "UnderMaintenance" }
                 });
         }
     }
