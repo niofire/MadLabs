@@ -23,6 +23,11 @@ namespace MadLabs.Hub.Controllers
             return View();
         }
 
+        public IActionResult Blog()
+        {
+            return View();
+        }
+
         public IActionResult UnderMaintenance()
         {
             return View();

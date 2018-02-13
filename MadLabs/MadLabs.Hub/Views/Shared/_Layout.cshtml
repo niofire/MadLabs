@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MadLabs.Hub</title>
 
+    @if (ViewData.ContainsKey("Styles"))
+    {
+        <link rel="stylesheet" href="~/css/@ViewData["Styles"]" />
+    }
+
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -35,6 +40,7 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Blog" asp-action="Index">Blog</a></li>
                 </ul>
             </div>
         </div>
@@ -43,7 +49,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2018 - MadLabs.Hub</p>
+            <p>&copy; 2018 - MadLabs.io</p>
         </footer>
     </div>
 

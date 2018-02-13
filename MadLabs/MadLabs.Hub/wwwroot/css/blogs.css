@@ -1,0 +1,11 @@
+﻿body {
+    background-color:aquamarine
+}
+
+
+img{
+    width:30%;
+    height:30%;
+    float:left;
+    overflow:scroll;
+}
