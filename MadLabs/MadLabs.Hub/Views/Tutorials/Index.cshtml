@@ -26,8 +26,8 @@
                     @foreach (var tutorial in tutSection.Tutorials)
                     {
                         <li class="list-group-item">
-                            <p>@tutorial.Summary</p>
                             @Html.ActionLink("Go somewhere", "GetTutorial", "Tutorials", new { section = tutSection.Section, filename = tutorial.Filename})
+                            <p>@tutorial.Summary</p>
                         </li>
                     }
                 </ul>
