@@ -11,12 +11,14 @@ namespace MadLabs.Hub.Controllers
             return View(
                 new List<TutorialOptionViewModel>()
                 {
+
                     new TutorialOptionViewModel(){
                         Id ="aspnetcore",
                         Tutorials = new List<TutorialViewModel>{
                                 new TutorialViewModel{
-                                    Summary="Hello, world!"
-                                }
+                                    Summary="Hello, world!",
+                                    Content = CommonMark.CommonMarkConverter.Convert("**Hello world!**")
+                                 }
                             }
                     },
                     new TutorialOptionViewModel(){

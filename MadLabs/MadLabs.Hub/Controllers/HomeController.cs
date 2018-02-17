@@ -28,11 +28,6 @@ namespace MadLabs.Hub.Controllers
             return View();
         }
 
-        public IActionResult UnderMaintenance()
-        {
-            return View();
-        }
-
         public IActionResult Error()
         {
             return View();

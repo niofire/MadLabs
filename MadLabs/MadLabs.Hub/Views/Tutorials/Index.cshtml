@@ -1,31 +1,37 @@
 ﻿@{
     Layout = "_Layout";
-    ViewData["Title"] = "Blogs!";
+    ViewData["Title"] = "Tutorials";
     ViewData["Styles"] = "tutorials.css";
 }
 
-    <div class="jumbotron">
-        <h1>Tutorials</h1>
-        <p>Collection of tutorials and examples on various technologies!</p>
-    </div>
+<div class="jumbotron">
+    <h1>Tutorials</h1>
+    <p>Collection of tutorials and examples on various technologies!</p>
+</div>
 
 <!-- Display Section-->
 <!-- List of Section-->
+<div class="row">
+    @foreach (var e in @Model)
+    {
+        <div class="col-md-6 col-xs-12 tutorial-section">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
 
-@foreach (var e in @Model)
-{
-    <div class="panel panel-default">
-        <!-- Default panel contents -->
+                <div class="panel-heading" id="@e.Id-header">
+                    <img src="~/images/Tutorials/@(e.Id)-banner.png" class="tutorial-header-image" />
+                </div>
 
-        <div class="panel-heading" id="@e.Id-header">
-            <img src="~/images/Tutorials/@(e.Id)-banner.png" class="tutorial-header-image" />
+                <ul class="list-group" id="@e.Id-list">
+                    @foreach (var tutorial in e.Tutorials)
+                    {
+                        <li class="list-group-item">
+                            <p>@tutorial.Summary</p>
+                            @Html.Raw(@tutorial.Content)
+                        </li>
+                    }
+                </ul>
+            </div>
         </div>
-
-        <ul class="list-group" id="@e.Id-list">
-            @foreach (var tutorial in e.Tutorials)
-            {
-                <li class="list-group-item">@tutorial.Summary</li>
-
-            }
-    </div>
-}
+    }
+</div>

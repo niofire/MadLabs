@@ -2,8 +2,11 @@
 {
     public class TutorialViewModel
     {
-        public string Id { get; set; }
-        public string Ref { get; set; }
+        public string LinkText { get; set; }
+        public string Controller { get; set; }
+        public string Action { get; set; }
         public string Summary { get; set; }
+
+        public string Content { get; set; }
     }
 }

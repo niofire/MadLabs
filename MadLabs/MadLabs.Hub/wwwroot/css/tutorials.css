@@ -1,7 +1,4 @@
-﻿body {
-}
-
-.tutorial-header-image{
+﻿.tutorial-header-image{
     max-height:80px;
     width:auto;
     height:auto;
@@ -9,8 +6,25 @@
 
 #aspnetcore-header {
     background-color: #0C2C65;
+    padding-right:0px;
+    padding-left:0px;
 }
 
 #vsts-header {
     background-color: #0078D7;
 }
+
+.no-horizontal-padding {
+    padding-left:0px !important;
+    padding-right:0px !important;
+}
+
+.no-padding{
+    padding:0px !important;
+}
+
+.tutorial-section{
+   padding-left: 10px;
+   padding-right:10px;
+}
+

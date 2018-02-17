@@ -6,6 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Tutorials\aspnetcore\**" />
+    <Compile Remove="Views\Tutorials\vsts\**" />
+    <Content Remove="Views\Tutorials\aspnetcore\**" />
+    <Content Remove="Views\Tutorials\vsts\**" />
+    <EmbeddedResource Remove="Views\Tutorials\aspnetcore\**" />
+    <EmbeddedResource Remove="Views\Tutorials\vsts\**" />
+    <None Remove="Views\Tutorials\aspnetcore\**" />
+    <None Remove="Views\Tutorials\vsts\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommonMark.NET" Version="0.15.1" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
@@ -21,6 +33,10 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Maintenance\" />
   </ItemGroup>
 
 </Project>
