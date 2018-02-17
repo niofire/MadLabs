@@ -12,22 +12,22 @@
 <!-- Display Section-->
 <!-- List of Section-->
 <div class="row">
-    @foreach (var e in @Model)
+    @foreach (var tutSection in @Model)
     {
         <div class="col-md-6 col-xs-12 tutorial-section">
             <div class="panel panel-default">
                 <!-- Default panel contents -->
 
-                <div class="panel-heading" id="@e.Id-header">
-                    <img src="~/images/Tutorials/@(e.Id)-banner.png" class="tutorial-header-image" />
+                <div class="panel-heading" id="@tutSection.Section-header">
+                    <img src="~/images/Tutorials/@(tutSection.Section)-banner.png" class="tutorial-header-image" />
                 </div>
 
-                <ul class="list-group" id="@e.Id-list">
-                    @foreach (var tutorial in e.Tutorials)
+                <ul class="list-group" id="@tutSection.Section-list">
+                    @foreach (var tutorial in tutSection.Tutorials)
                     {
                         <li class="list-group-item">
                             <p>@tutorial.Summary</p>
-                            @Html.Raw(@tutorial.Content)
+                            @Html.ActionLink("Go somewhere", "GetTutorial", "Tutorials", new { section = tutSection.Section, filename = tutorial.Filename})
                         </li>
                     }
                 </ul>

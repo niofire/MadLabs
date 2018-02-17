@@ -51,9 +51,7 @@ namespace MadLabs.Hub
                 app.UseBrowserLink();
             }
             else
-            {
                 app.UseExceptionHandler("/Home/Error");
-            }
 
             app.UseStaticFiles();
 

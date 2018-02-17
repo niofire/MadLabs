@@ -4,6 +4,6 @@ namespace MadLabs.Hub.ViewModels
 {
     public class TutorialOptionSelectorViewModel
     {
-        public List<TutorialViewModel> Tutorials { get; set; }
+        public List<TutorialViewModel> Tutorials { get; set; } = new List<TutorialViewModel>();
     }
 }
