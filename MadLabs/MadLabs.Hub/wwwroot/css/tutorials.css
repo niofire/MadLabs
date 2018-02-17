@@ -1,0 +1,16 @@
+﻿body {
+}
+
+.tutorial-header-image{
+    max-height:80px;
+    width:auto;
+    height:auto;
+}
+
+#aspnetcore-header {
+    background-color: #0C2C65;
+}
+
+#vsts-header {
+    background-color: #0078D7;
+}

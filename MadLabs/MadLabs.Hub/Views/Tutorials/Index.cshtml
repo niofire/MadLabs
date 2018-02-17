@@ -1,24 +1,31 @@
 ﻿@{
     Layout = "_Layout";
     ViewData["Title"] = "Blogs!";
+    ViewData["Styles"] = "tutorials.css";
 }
 
-<div class="container">
     <div class="jumbotron">
         <h1>Tutorials</h1>
         <p>Collection of tutorials and examples on various technologies!</p>
     </div>
-</div>
 
 <!-- Display Section-->
-
 <!-- List of Section-->
-<div class="row">
-    <div class="col-lg-2">
-        <img src="~/images/aspnet_core_banner.png" width="150" height="150" />
+
+@foreach (var e in @Model)
+{
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+
+        <div class="panel-heading" id="@e.Id-header">
+            <img src="~/images/Tutorials/@(e.Id)-banner.png" class="tutorial-header-image" />
+        </div>
+
+        <ul class="list-group" id="@e.Id-list">
+            @foreach (var tutorial in e.Tutorials)
+            {
+                <li class="list-group-item">@tutorial.Summary</li>
+
+            }
     </div>
-    <div class="col-lg-10">
-        <p class="align-bottom">Asp.NET Core 2 tutorials, Hello World, Web API, MVC and more!</p>
-    </div>
-    
-</div>
+}
