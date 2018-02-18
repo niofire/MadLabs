@@ -1,3 +1,4 @@
-﻿<Summary>A cool little guide!</Summary>
-
+﻿<!--
+	<summary name="bleh"> deh</summary>
+-->
 # Hello, Markdown!

@@ -4,6 +4,8 @@
     ViewData["Styles"] = "tutorials.css";
 }
 
+@using MadLabs.Hub.Extensions;
+
 <div class="jumbotron">
     <h1>Tutorials</h1>
     <p>Collection of tutorials and examples on various technologies!</p>
@@ -23,11 +25,15 @@
                 </div>
 
                 <ul class="list-group" id="@tutSection.Section-list">
-                    @foreach (var tutorial in tutSection.Tutorials)
+                    @foreach (var metadata in tutSection.TutorialsMetadata)
                     {
                         <li class="list-group-item">
-                            @Html.ActionLink("Go somewhere", "GetTutorial", "Tutorials", new { section = tutSection.Section, filename = tutorial.Filename})
-                            <p>@tutorial.Summary</p>
+                            @Html.ActionLink(
+                                    (string) DictionaryExtension.GetValue(metadata,"title","Some Article"),
+                                    "GetTutorial",
+                                    "Tutorials",
+                                    new { section = tutSection.Section, filename = DictionaryExtension.GetValue(metadata, "filename", "none") });
+                            <p>@DictionaryExtension.GetValue(metadata,"summary","No Description Available.")</p>
                         </li>
                     }
                 </ul>

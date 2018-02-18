@@ -6,6 +6,6 @@ namespace MadLabs.Hub.ViewModels
     {
         public string Section { get; set; }
 
-        public List<TutorialViewModel> Tutorials { get; set; } = new List<TutorialViewModel>();
+        public List<Dictionary<string, string>> TutorialsMetadata { get; set; } = new List<Dictionary<string, string>>();
     }
 }

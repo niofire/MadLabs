@@ -1,3 +1,4 @@
+using MadLabs.Hub.DataProviders;
 using MadLabs.Hub.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -10,16 +11,17 @@ namespace MadLabs.Hub.Controllers
     {
         private readonly IHostingEnvironment _appEnvironment;
         private readonly string _tutorialRoot;
+        private readonly MarkdownDataProvider _mdProvider;
 
         public TutorialsController(IHostingEnvironment appEnvironment)
         {
+            _mdProvider = new MarkdownDataProvider();
             _appEnvironment = appEnvironment;
             _tutorialRoot = Path.Combine(appEnvironment.WebRootPath, "markdown/Tutorials");
         }
 
         public IActionResult Index()
         {
-            //get directory names
             List<TutorialOptionViewModel> sections = new List<TutorialOptionViewModel>();
 
             foreach(var dir in Directory.GetDirectories(_tutorialRoot))
@@ -29,52 +31,21 @@ namespace MadLabs.Hub.Controllers
 
                 foreach (var file in Directory.GetFiles(dir))
                 {
-                    option.Tutorials.Add(new TutorialViewModel()
-                    {
-                        Summary = "template",
-                        Filename = Path.GetFileName(file)
-                    });
+                    option.TutorialsMetadata.Add(_mdProvider.GetMetadata(file));
                 }
 
-                if (option.Tutorials.Count != 0)
+                if (option.TutorialsMetadata.Count != 0)
                     sections.Add(option);
             }
 
             return View(sections);
-            /*
-            return View(
-                new List<TutorialOptionViewModel>()
-                {
-
-                    new TutorialOptionViewModel(){
-                        Id ="aspnetcore",
-                        Tutorials = new List<TutorialViewModel>{
-                                new TutorialViewModel{
-                                    Summary="Hello, world!",
-                                 }
-                            }
-                    },
-                    new TutorialOptionViewModel(){
-                        Id="vsts",
-                        Tutorials = new List<TutorialViewModel>{
-                            new TutorialViewModel{
-                                Summary = "Hello, some other world!"
-                            }
-                    }
-                    }
-                }
-                );*/
         }
 
         public IActionResult GetTutorial(string section, string filename)
         {
-            var filepath = Path.Combine(new string[] { _appEnvironment.WebRootPath,"markdown", "Tutorials", section, filename });
-            using (StreamReader sr = new StreamReader(new FileStream(filepath, FileMode.Open, FileAccess.Read)))
-            using(StringWriter writer = new StringWriter())
-            {
-                CommonMark.CommonMarkConverter.Convert(sr, writer);
-                return View("Views/Tutorials/TutorialTemplate.cshtml",writer.ToString());
-            }
+            var tutorialFilepath = Path.Combine(new string[] { _tutorialRoot, section, filename });
+
+            return View(_mdProvider.GetMarkdownViewModel(tutorialFilepath));
         }
     }
 }
