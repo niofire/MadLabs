@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.IO;
+using MadLabs.Hub.Extensions;
 
 namespace MadLabs.Hub.Controllers
 {
@@ -29,10 +30,22 @@ namespace MadLabs.Hub.Controllers
                 var option = new TutorialOptionViewModel();
                 option.Section = Path.GetFileName(dir);
 
+                //Fetch all available md in the section's directory
                 foreach (var file in Directory.GetFiles(dir))
                 {
                     option.TutorialsMetadata.Add(_mdProvider.GetMetadata(file));
                 }
+
+                option.TutorialsMetadata.Sort(
+                    (x, y) =>
+                    {
+                        if (int.TryParse(x.GetValue("order", "-1"), out int xOrder))
+                            return 1;
+                        if (int.TryParse(y.GetValue("order", "-1"), out int yOrder))
+                            return -1;
+
+                        return xOrder - yOrder;
+                    });
 
                 if (option.TutorialsMetadata.Count != 0)
                     sections.Add(option);

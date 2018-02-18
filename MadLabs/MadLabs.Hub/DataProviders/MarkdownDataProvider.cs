@@ -1,5 +1,4 @@
 ﻿using MadLabs.Hub.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
@@ -28,23 +27,36 @@ namespace MadLabs.Hub.DataProviders
             //Parse through the metadata node.
             using (XmlReader reader = XmlReader.Create(filepath))
             {
-                reader.Read();
-
-                if (reader.NodeType != XmlNodeType.Comment)
-                    return metadataStore;
-                XmlReader metadataReader = XmlReader.Create(new StringReader(reader.Value));
-
-                //Read the metadata
-                while (metadataReader.Read())
+                //reader.ReadToFollowing("metadata");
+                try
                 {
-                    if(reader.NodeType == XmlNodeType.Element 
-                    && !metadataStore.ContainsKey(reader.Name))
-                        metadataStore.Add(reader.Name, reader.Value);
-                }
+                    reader.Read();
 
+                    if (reader.NodeType != XmlNodeType.Comment)
+                        return metadataStore;
+                    XmlReader metadataReader = XmlReader.Create(new StringReader(reader.Value));
+
+                    //Read the metadata
+                    while (metadataReader.Read())
+                    {
+                        string key = metadataReader.Name.ToLower();
+                        string value = metadataReader.GetAttribute("value");
+
+                        if (metadataReader.NodeType == XmlNodeType.Element
+                        && !metadataStore.ContainsKey(key)
+                        && !string.IsNullOrEmpty(value))
+                        {
+                            metadataStore.Add(key, value);
+                        }
+                    }
+                }
+                catch (XmlException e)
+                {
+                    //TODO log xml error
+                    return metadataStore;
+                }
                 return metadataStore;
             }
-            return metadataStore;
         }
 
         public MarkdownViewModel GetMarkdownViewModel(string filepath)
