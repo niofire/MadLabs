@@ -91,7 +91,7 @@ namespace MadLabs.Hub.Controllers
                     });
 
                 if (option.TutorialsMetadata.Count != 0
-                    && _tutorialMetadata.ContainsKey(option.Section))
+                    && !_tutorialMetadata.ContainsKey(option.Section))
                     _tutorialMetadata.Add(option.Section, option);
             }
         }
