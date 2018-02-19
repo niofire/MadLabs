@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Tutorials";
+    ViewData["Styles"] = "tutorials.css";
+}
+
+@using MadLabs.Hub.Extensions;
+
+<div class="jumbotron text-center">
+    <h1>Tutorials</h1>
+    <p>Collection of tutorials and examples on various technologies!</p>
+</div>
+
+<!-- Display Section-->
+<!-- List of Section-->
+<div class="container">
+    <div class="row">
+        @foreach (var tutSection in @Model)
+        {
+            <div class="col-md-6 col-xs-12 tutorial-section">
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+
+                    <div class="panel-heading" id="@tutSection.Section-header">
+                        <img src="~/images/Tutorials/@(tutSection.Section)-banner.png" class="tutorial-header-image" />
+                    </div>
+
+                    <ul class="list-group" id="@tutSection.Section-list">
+                        @foreach (var metadata in tutSection.TutorialsMetadata)
+                        {
+                            <li class="list-group-item">
+                                @Html.ActionLink(
+                                    (string)DictionaryExtension.GetValue(metadata, "title", "Some Article"),
+                                    "GetTutorial",
+                                    "Tutorials",
+                                    new { section = tutSection.Section, filename = DictionaryExtension.GetValue(metadata, "filename", "none") })
+                                <p>@DictionaryExtension.GetValue(metadata, "summary", "No Description Available.")</p>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+    </div>
+</div>
