@@ -2,7 +2,7 @@
 Mat and Danny's new fantasmagorical website.
 
 # VSTS Build Status
- **Master** ![Build & Test](https://mastloui.visualstudio.com/_apis/public/build/definitions/bb7005a6-2d4a-4827-bf41-0367d0fc6007/3/badge)
+ **Master** ![Build & Test](https://madlabsworkshop.visualstudio.com/_apis/public/build/definitions/24230ea1-01f4-435c-881a-740534f63147/2/badge)
  - Current URL: https://madlabs.azurewebsites.net/
 
 # Project Prerequisites
