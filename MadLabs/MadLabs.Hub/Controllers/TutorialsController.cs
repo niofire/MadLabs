@@ -43,7 +43,6 @@ namespace MadLabs.Hub.Controllers
         {
             if (_tutorialMetadata.Count == 0)
                 LoadTutorialMetadata();
-
             return View(_tutorialMetadata.Values.ToList());
         }
 
@@ -57,7 +56,7 @@ namespace MadLabs.Hub.Controllers
         {
             var tutorialFilepath = Path.Combine(new string[] { _tutorialRoot, section, filename });
 
-            return View(_mdProvider.GetMarkdownViewModel(tutorialFilepath));
+            return View("TutorialTemplate", _mdProvider.GetMarkdownViewModel(tutorialFilepath));
         }
 
         /// <summary>
@@ -78,13 +77,14 @@ namespace MadLabs.Hub.Controllers
                     option.TutorialsMetadata.Add(_mdProvider.GetMetadata(file));
                 }
 
-                //
-                option.TutorialsMetadata.Sort(
+                var x1 = option.TutorialsMetadata;
+
+                x1.Sort(
                     (x, y) =>
                     {
-                        if (int.TryParse(x.GetValue("order", "-1"), out int xOrder))
+                        if (!int.TryParse(x.GetValue("order", "-1"), out int xOrder))
                             return 1;
-                        if (int.TryParse(y.GetValue("order", "-1"), out int yOrder))
+                        if (!int.TryParse(y.GetValue("order", "-1"), out int yOrder))
                             return -1;
 
                         return xOrder - yOrder;

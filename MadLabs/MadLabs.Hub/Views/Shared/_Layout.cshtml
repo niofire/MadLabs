@@ -16,6 +16,8 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
     </environment>
+    <link rel="stylesheet" href="~/css/splendor.css"/>
+
     @if (ViewData.ContainsKey("Styles"))
     {
         <link rel="stylesheet" href="~/css/@ViewData["Styles"]" />
