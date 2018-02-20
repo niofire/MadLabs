@@ -26,43 +26,41 @@
             totalTutorials += tutSection.TutorialsMetadata.Count;
         }
     }
+
     @foreach (var tutSection in @Model)
     {
-        @runningCount += tutSection.TutorialMetadata.Count;
+        runningCount += tutSection.TutorialsMetadata.Count;
 
             <!-- if running count is > half, start new row-->
         @if (runningCount > (totalTutorials / 2))
         {
-            </div>
-                <div class="col-md-6 col-xs-12 tutorial-section">
-                    @runningCount = 0;
+            runningCount = 0;
+            @Html.Raw("</div>");
+            @Html.Raw("<div class=\"col-md-6 col-xs-12 tutorial-section\">");
+        }
 
+                <div class="panel panel-default pt-3">
+                    <!-- Default panel contents -->
 
-             }
+                    <div class="panel-heading panel-header" id="@tutSection.Section-header">
+                        <img src="~/images/Tutorials/banners/@(tutSection.Section)-banner.png" class="tutorial-header-image" />
+                    </div>
 
-                    <div class="panel panel-default pt-3">
-                        <!-- Default panel contents -->
-
-                        <div class="panel-heading panel-header" id="@tutSection.Section-header">
-                            <img src="~/images/Tutorials/banners/@(tutSection.Section)-banner.png" class="tutorial-header-image" />
-                        </div>
-
-                        <ul class="list-group" id="@tutSection.Section-list">
-                            @foreach (var metadata in tutSection.TutorialsMetadata)
-                            {
-                                <li class="list-group-item">
-                                    @Html.ActionLink(
+                    <ul class="list-group" id="@tutSection.Section-list">
+                        @foreach (var metadata in tutSection.TutorialsMetadata)
+                        {
+                            <li class="list-group-item">
+                                @Html.ActionLink(
                                     (string)DictionaryExtension.GetValue(metadata, "title", "Some Article"),
                                     "GetTutorial",
                                     "Tutorials",
                                     new { section = tutSection.Section, filename = DictionaryExtension.GetValue(metadata, "filename", "none") })
-                                    <p>@DictionaryExtension.GetValue(metadata, "summary", "No Description Available.")</p>
-                                </li>
-                            }
-                        </ul>
-                    </div>
+                                <p>@DictionaryExtension.GetValue(metadata, "summary", "No Description Available.")</p>
+                            </li>
+                        }
+                    </ul>
                 </div>
-            }
-    </div>
+                }
+            </div>
 
 </div>
