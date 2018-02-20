@@ -14,6 +14,10 @@
     background-color: #0078D7;
 }
 
+#azure-header {
+    background-color: #0095C8;
+}
+
 .no-horizontal-padding {
     padding-left:0px !important;
     padding-right:0px !important;
@@ -26,5 +30,13 @@
 .tutorial-section{
    padding-left: 10px;
    padding-right:10px;
+}
+
+.panel-header{
+    height:80px;
+}
+
+.list-group-item{
+    margin-left:0px;
 }
 
