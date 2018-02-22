@@ -17,7 +17,7 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
     </environment>
     <link rel="stylesheet" href="~/css/splendor.css"/>
-
+    <link rel="stylesheet" href="~/css/site.css"/>
     @if (ViewData.ContainsKey("Styles"))
     {
         <link rel="stylesheet" href="~/css/@ViewData["Styles"]" />
@@ -36,6 +36,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="Tutorials" asp-action="Index">Tutorials</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Games" asp-action="Index">Games</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
