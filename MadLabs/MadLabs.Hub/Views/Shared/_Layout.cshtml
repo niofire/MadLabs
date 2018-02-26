@@ -31,18 +31,14 @@
             <li class="nav-item active">
                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">MadLabs.io</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="Tutorials" asp-action="Index">Tutorials</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="Games" asp-action="Index">Games</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
-            </li>
+            @{
+                foreach (var controller in new[] { "Home", "Tutorials", "Games", "About" })
+                {
+                    <li class="nav-item @((string)ViewContext.RouteData.Values["Controller"] == controller ? "active" : "") ">
+                        <a class="nav-link" asp-area="" asp-controller="@controller" asp-action="Index">@controller</a>
+                    </li>
+                }   
+            }
         </ul>
     </nav>
 
