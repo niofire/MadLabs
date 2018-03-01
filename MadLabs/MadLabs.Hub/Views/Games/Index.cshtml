@@ -11,21 +11,20 @@
 <div class="container container-large pt-2">
     <h2 class="text-center pb-5">Available Games</h2>
     <div class="row">
-        <div class="col-lg-6 col-md-12 ">
+        @{
+            int count = 0;
+        }
+        @foreach (var metadata in (List<MadLabs.Hub.ViewModels.GameMetadataViewModel>)Model)
+        {
+        <div class="col-lg-6 col-md-12" onclick="location.href='@Url.Action("Play", "Games", new { gameId = count })'">
             <div class="card game-card on-hover-btn-cursor">
-                <img class="card-img-top" src="~/images/games/pong-banner.png" alt="Card image cap">
+                <img class="card-img-top" src="~/@metadata.BannerImageSrc" alt="Card image cap">
                 <div class="card-body">
-                    <p class="card-text">Online/Offline 2 player Pong game. Classic and powerups mode available.</p>
+                    <p class="card-text">@metadata.Description</p>
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 col-md-12 pt-lg-0 pt-md-5">
-            <div class="card game-card on-hover-btn-cursor">
-                <img class="card-img-top" src="~/images/games/pong-banner.png" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-text">Online/Offline 2 player Pong game. Classic and powerups mode available.</p>
-                </div>
-            </div>
-        </div>
+            count++;
+        }
     </div>
 </div>
