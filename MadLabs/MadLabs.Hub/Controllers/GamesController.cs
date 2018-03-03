@@ -13,7 +13,7 @@ namespace MadLabs.Hub.Controllers
                 Title="Pong",
                 BannerImageSrc="images/games/pong-banner.png",
                 Description="Online/Offline 2 player Pong game. Classic and powerups mode available.",
-                Url = "",
+                Url = "https://madlabspong.azurewebsites.net/",
             }
         };
         
