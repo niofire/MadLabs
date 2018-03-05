@@ -8,6 +8,5 @@ namespace MadLabs.Hub.ViewModels
         public string Section { get; set; }
 
         public List<MetadataStore> TutorialsMetadata { get; set; } = new List<MetadataStore>();
-
     }
 }
