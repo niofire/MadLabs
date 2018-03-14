@@ -14,6 +14,13 @@ namespace MadLabs.Hub.Controllers
                 BannerImageSrc="images/games/pong-banner.png",
                 Description="Online/Offline 2 player Pong game. Classic and powerups mode available.",
                 Url = "https://madlabspong.azurewebsites.net/",
+            },
+
+            new GameMetadataViewModel(){
+                Title="Snek",
+                BannerImageSrc="images/games/pong-banner.png",
+                Description="Online/Offline 2 player snake game.",
+                Url = "https://madlabssnek.azurewebsites.net",
             }
         };
         
