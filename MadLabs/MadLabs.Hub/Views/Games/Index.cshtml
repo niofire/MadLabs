@@ -6,20 +6,21 @@
 
 <div class="container container-large pt-2">
     <h2 class="text-center pb-5">Available Games</h2>
-    <div class="row">
+    <div class="card-deck h-100">
         @{
             int count = 0;
         }
         @foreach (var metadata in (List<MadLabs.Hub.ViewModels.GameMetadataViewModel>)Model)
         {
-        <div class="col-lg-6 col-md-12" onclick="location.href='@Url.Action("Play", "Games", new { gameId = count })'">
-            <div class="card game-card on-hover-btn-cursor">
-                <img class="card-img-top" src="~/@metadata.BannerImageSrc" alt="Card image cap">
-                <div class="card-body">
+            
+            <div class="card game-card on-hover-btn-cursor" onclick="location.href='@Url.Action("Play", "Games", new { gameId = count })'">
+                <img class="card-img-top game-image" src="~/@metadata.BannerImageSrc" alt="@metadata.Title">
+                <div class="card-body game-card-body">
+                    <h5 class="card-title">@metadata.Title</h5>
                     <p class="card-text">@metadata.Description</p>
                 </div>
             </div>
-        </div>
+        
             count++;
         }
     </div>

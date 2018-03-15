@@ -18,7 +18,7 @@ namespace MadLabs.Hub.Controllers
 
             new GameMetadataViewModel(){
                 Title="Snek",
-                BannerImageSrc="images/games/pong-banner.png",
+                BannerImageSrc="images/games/snake.jpg",
                 Description="Online/Offline 2 player snake game.",
                 Url = "https://madlabssnek.azurewebsites.net",
             }
