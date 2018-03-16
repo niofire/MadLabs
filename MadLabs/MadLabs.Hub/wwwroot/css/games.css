@@ -12,6 +12,7 @@
     height: 66%;    
 }
 
-.game-card-body{
-    height:33%;
+.game-card-body {
+    height: 33%;
+    overflow: hidden;
 }
