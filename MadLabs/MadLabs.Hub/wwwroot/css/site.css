@@ -1,5 +1,5 @@
-﻿.jumbotron-text{
-    font-size:1.75rem;
+﻿.jumbotron-text {
+    font-size: 1.75rem;
 }
 
 .on-hover-btn-cursor:hover {
@@ -33,22 +33,28 @@ hr {
 }
 
 
-#game-iframe-container{
-    display:inline-block;
-    width:70%;
-    margin-left:15%;
-    min-height:70%;
-    height:90%;
-    margin-bottom:10%;
+#game-iframe-container {
+    display: inline-block;
+    width: 70%;
+    margin-left: 15%;
+    min-height: 70%;
+    height: 90%;
+    margin-bottom: 10%;
 }
 
-#game-iframe{
-    width:100%;
-    height:100%;
+#game-iframe {
+    width: 100%;
+    height: 100%;
 }
-html{
-    height:100%;
+
+html {
+    height: 100%;
 }
+
 body {
-    height:100%;
+    height: 100%;
+}
+
+.container-large {
+    max-width: 75%;
 }
