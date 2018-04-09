@@ -52,3 +52,10 @@ html{
 body {
     height:100%;
 }
+
+.project-repo-img{
+    max-width:150px;
+    max-height:150px;
+    display:block;
+    margin:auto;
+}
