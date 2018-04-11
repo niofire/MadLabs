@@ -49,12 +49,18 @@ hr {
     height: 100%;
 }
 
-html {
+html, body {
     height: 100%;
 }
 
-body {
-    height:100%;
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+
+.footer,
+.push {
+    height: 50px;
 }
 
 .project-repo-img{
