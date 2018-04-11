@@ -2,3 +2,48 @@
     Layout = "_Layout";
     ViewData["Title"] = "Projects";
 }
+
+<div class="jumbotron text-center">
+    <h1>Projects</h1>
+    <p class="jumbotron-text">Nothing cooler than unfinished projects.</p>
+</div>
+
+<div class="container container-large">
+
+    @{
+        var metadata = (List<MadLabs.Hub.ViewModels.ProjectMetaDataViewModel>)Model;
+    }
+    <div class="row">
+        @for (int i = 0; i < metadata.Count; ++i)
+        {
+            <div class="col-lg-6 mb-5">
+                <div class="card">
+                    <div onclick="location.href='@metadata[i].Link'" class="on-hover-btn-cursor">
+                        <div class="card-header text-center p-0">
+                            <h3><strong>@metadata[i].Title</strong></h3>
+                        </div>
+                        <div class="row m-0">
+                            <div class="col-lg-12 pr-0">
+                                <img class="card-img" src="~/images/projects/@metadata[i].ImageSrc" alt="Simple RTCDataChannel Example Image." />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0">
+                        <h3 class="card-title">Summary</h3>
+                        <p class="card-text">@metadata[i].Description</p>
+                        <h3 class="card-title">Technologies</h3>
+                        <p class="card-text">
+                            @foreach (string technology in metadata[i].Technologies)
+                            {
+                                <kbd>@technology</kbd>
+
+                            }
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            <br />
+        }
+    </div>
+</div>
