@@ -40,6 +40,8 @@ hr {
     min-height: 70%;
     height: 90%;
     margin-bottom: 10%;
+    background: url(../images/gifs/loading.gif) center center no-repeat;
+    background-color: #2A2826
 }
 
 #game-iframe {
