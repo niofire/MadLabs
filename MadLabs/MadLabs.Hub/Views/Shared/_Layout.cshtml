@@ -6,26 +6,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>@ViewData["Title"] - MadLabs.Hub</title>
 
-
-
-        <environment names="Development">
-            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        </environment>
-        <environment names="Staging,Production">
-            <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.min.css"
-                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        </environment>
-        <link rel="stylesheet" href="~/css/splendor.css"/>
-        <link rel="stylesheet" href="~/css/site.css"/>
-        @if (ViewData.ContainsKey("Styles"))
-        {
-            <link rel="stylesheet" href="~/css/@ViewData["Styles"]" />
-        }
-        @if (ViewData.ContainsKey("Script"))
-        {
-            <script src="~/js/@ViewData["Script"]" asp-append-version="true"></script>
-        }
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+    </environment>
+    <link rel="stylesheet" href="~/css/splendor.css"/>
+    <link rel="stylesheet" href="~/css/site.css"/>
+    @if (ViewData.ContainsKey("Styles"))
+    {
+        <link rel="stylesheet" href="~/css/@ViewData["Styles"]" />
+    }
+    @if (ViewData.ContainsKey("Script"))
+    {
+        <script src="~/js/@ViewData["Script"]" asp-append-version="true"></script>
+    }
 
         @Html.Raw(JavaScriptSnippet.FullScript)
     </head>
